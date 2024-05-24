@@ -1,6 +1,7 @@
 package examplecode;
 
 import java.awt.Desktop.Action;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,11 +27,13 @@ public class DragandDrop {
 		WebElement dragg = driver.findElement(By.xpath("//div[@id='draggable']"));
 		WebElement dropp = driver.findElement(By.xpath("//div[@id='simpleDropContainer']//div[@id='droppable']"));
         Actions act = new Actions(driver); 
-        act.dragAndDrop(dragg, dropp).perform();
+        //act.dragAndDrop(dragg, dropp).perform();
+        act.contextClick().perform();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         
-        WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.alertIsPresent());
-        driver.manage().
+      //  WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+       // wait.until(ExpectedConditions.alertIsPresent());
+        
 	}
 
 }
